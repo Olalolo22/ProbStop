@@ -28,7 +28,7 @@ def calculate_ailment_score(donor_nature_of_ailment, donor_age, recipient_age):
         'congenital': 8,
         'acquired': 6,
         'autoimmune': 4,
-        'malignant': 2
+        'malignant': 2 ,
         'N/A' : 0  
     }
 
