@@ -1,3 +1,5 @@
+import CompatibilityModel as CompatibilityModel
+
 from geopy.geocoders import Nominatim  # Install geopy library: pip install geopy
 
 
@@ -47,7 +49,7 @@ def calculate_compatibility_and_rank_donors(recipient_id, num_donors=15, distanc
   # Calculate compatibility scores and distances for each donor
   ranked_donors = []
   for donor in all_donors:
-    score = compatibility_score(recipient, donor)  # Assuming compatibility_score takes recipient and donor objects
+    score = CompatibilityModel.compatibility_score(recipient, donor)  # Assuming compatibility_score takes recipient and donor objects
     distance = calculate_distance(recipient.address, donor.address)
     weighted_score = (score * (1 - distance_weight)) + (distance * distance_weight)
     ranked_donors.append((donor.donor_id, score, distance, weighted_score))
