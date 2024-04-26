@@ -22,29 +22,37 @@ The Scores capture the Nature of the Ailment the Donor suffers from and descend 
 '''
 
 def calculate_ailment_score(donor_nature_of_ailment, donor_age, recipient_age):
-    # Define a dictionary of nature of ailment scores
-    ailment_nature_scores = {
-        'genetic': 10,
-        'congenital': 8,
-        'acquired': 6,
-        'autoimmune': 4,
-        'malignant': 2 ,
-        'N/A' : 0  
-    }
 
-    # Define age difference thresholds and scores
-    age_diff_thresholds = [5, 10, 15, 20]
-    age_diff_scores = [10, 8, 6, 4, 2]
+  # Define a dictionary of nature of ailment scores (case-insensitive)
+  ailment_nature_scores = {
+      'genetic': 10,
+      'congenital': 8,
+      'acquired': 6,
+      'autoimmune': 4,
+      'malignant': 2,
+      'N/A': 0
+  }
 
-    # Calculate age difference between donor and recipient
-    age_difference = abs(donor_age - recipient_age)
+  # Define age difference thresholds and scores
+  age_diff_thresholds = [5, 10, 15, 20]
+  age_diff_scores = [10, 8, 6, 4, 2]
 
-    # Assign a score based on the nature of ailment
-    nature_of_ailment_score = ailment_nature_scores.get(donor_nature_of_ailment.lower(), 0)
+  # Calculate age difference between donor and recipient
+  age_difference = abs(donor_age - recipient_age)
 
-    # Assign a score based on the age difference
-    age_diff_score = age_diff_scores[bisect.bisect_right(age_diff_thresholds, age_difference)]
+  # Assign score based on the lowercased nature of ailment
+  nature_of_ailment_score = ailment_nature_scores.get(donor_nature_of_ailment.lower(), 0)
 
+  # Calculate a combined score based on ailment nature and age difference
+  # Here, a higher score signifies better compatibility
+
+  # Option 1: Weighted Average (adjust weights as needed)
+  combined_score = (0.7 * nature_of_ailment_score) + (0.3 * age_diff_scores[min(len(age_diff_scores) - 1, age_difference // age_diff_thresholds[0])])
+
+  
+  return combined_score
+    
+    
 
 
 
