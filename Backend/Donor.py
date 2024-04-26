@@ -1,6 +1,6 @@
 class Donor:
-    def __init__(self, name, age, height, weight, blood_group, hla_typing, nature_of_ailment , deceased , organs_available):
-        self.name = name
+    def __init__(self, name, age, height, weight, blood_group, hla_typing, nature_of_ailment , deceased , organs_available ):
+        self.name = nam
         self.age = age
         self.height = height  # in centimeters
         self.weight = weight  # in kilograms
@@ -9,6 +9,7 @@ class Donor:
         self.nature_of_ailment = nature_of_ailment
         self.deceased = deceased
         self.organs_available = organs_available
+        
 
     def calculate_bmi(self):
         height_m = self.height / 100
