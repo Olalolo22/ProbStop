@@ -1,5 +1,5 @@
 class Donor:
-    def __init__(self, name, age, height, weight, blood_group, hla_typing, nature_of_ailment):
+    def __init__(self, name, age, height, weight, blood_group, hla_typing, nature_of_ailment , deceased , organs_available):
         self.name = name
         self.age = age
         self.height = height  # in centimeters
@@ -7,7 +7,8 @@ class Donor:
         self.blood_group = blood_group
         self.hla_typing = hla_typing  # comma-separated string of HLA alleles
         self.nature_of_ailment = nature_of_ailment
-        
+        self.deceased = deceased
+        self.organs_available = organs_available
 
     def calculate_bmi(self):
         height_m = self.height / 100
