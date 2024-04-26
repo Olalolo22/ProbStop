@@ -12,7 +12,7 @@ A diadic function that calculates an approximate distance in Kilometres between
   *The address of the donor
 '''
 def calculate_distance(recipient_address, donor_address):
-  geolocator = Nominatim(user_agent="your_app_name")  # Replace with your app name
+  geolocator = Nominatim(user_agent="ProbStop")  
   recipient_location = geolocator.geocode(recipient_address)
   donor_location = geolocator.geocode(donor_address)
 
