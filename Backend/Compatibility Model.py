@@ -1,3 +1,7 @@
+
+import Donor as Donor
+import Recipient as Recipient
+
 def compatibility_score(Donor, Recipient):
     ailment_score = calculate_ailment_score(Donor.nature_of_ailment, Donor.age, Recipient.age)
     bmi_score = calculate_bmi_score(Recipient.height, Recipient.weight, Donor.height, Donor.weight)
