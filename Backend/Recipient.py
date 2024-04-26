@@ -1,5 +1,5 @@
 class Recipient:
-    def __init__(self, name, age, height, weight, blood_group, hla_typing, nature_of_ailment , organs_affected , location , hospital_name):
+    def __init__(self, name, age, height, weight, blood_group, hla_typing, nature_of_ailment , organs_affected , location ):
         self.name = name
         self.age = age
         self.height = height 
@@ -9,7 +9,6 @@ class Recipient:
         self.nature_of_ailment = nature_of_ailment  
         self.organs_affected = organs_affected
         self.location = location
-        self.hospital_name = hospital_name
         
 
     def calculate_bmi(self):
