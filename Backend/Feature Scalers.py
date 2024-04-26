@@ -60,34 +60,39 @@ def calculate_ailment_score(donor_nature_of_ailment, donor_age, recipient_age):
 A multiadic function that calculates a BMI compatability metric between a potential donor and recipient
 The function accpets the following as parameters
 
+The function makes use of a helper function calculate_bmi to find the BMI value of each person in the pair
 * The height and weight of the recipient
 * The height and weight of the  propsective Donor
 
 
 '''
 
+def calculate_bmi(height, weight):
+  # Convert height from cm to meters
+  height_m = height / 100
 
+  # Calculate BMI using the formula: weight (kg) / (height (m))^2
+  bmi = weight / (height_m ** 2)
+  return bmi
 
 def calculate_bmi_score(recipient_height, recipient_weight, donor_height, donor_weight):
- 
-    recipient_bmi = calculate_bmi(recipient_height, recipient_weight)
-    donor_bmi = calculate_bmi(donor_height, donor_weight)
+  # Calculate BMI for recipient and donor
+  recipient_bmi = calculate_bmi(recipient_height, recipient_weight)
+  donor_bmi = calculate_bmi(donor_height, donor_weight)
 
-    # Calculate the absolute difference between BMIs
-    bmi_diff = abs(recipient_bmi - donor_bmi)
+  # Define a threshold for acceptable BMI difference (adjust as needed)
+  acceptable_diff = 2
 
-    # Assign a score based on the BMI difference
-    if bmi_diff <= 2:
-        return 10
-    elif bmi_diff <= 4:
-        return 8
-    elif bmi_diff <= 6:
-        return 6
-    elif bmi_diff <= 8:
-        return 4
-    else:
-        return 2
+  # Calculate the absolute difference between BMIs
+  bmi_diff = abs(recipient_bmi - donor_bmi)
 
+  # Score penalty based on the difference from the ideal (0 difference)
+  score_penalty = min(bmi_diff / acceptable_diff, 1)  # Clamp to 1 for large differences
+
+  # Assign a score based on the penalty (0 = perfect match, 1 = high difference)
+  bmi_score = (1 - score_penalty) * 10
+
+  return bmi_score
 
 
 
