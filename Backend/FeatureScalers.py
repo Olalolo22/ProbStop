@@ -21,7 +21,7 @@ The Scores capture the Nature of the Ailment the Donor suffers from and descend 
 
 '''
 
-def calculate_ailment_score(donor_nature_of_ailment, donor_age, recipient_age):
+def calculate_ailment_score(recipient_nature_of_ailment, donor_age, recipient_age):
 
   # Define a dictionary of nature of ailment scores (case-insensitive)
   ailment_nature_scores = {
@@ -41,7 +41,7 @@ def calculate_ailment_score(donor_nature_of_ailment, donor_age, recipient_age):
   age_difference = abs(donor_age - recipient_age)
 
   # Assign score based on the lowercased nature of ailment
-  nature_of_ailment_score = ailment_nature_scores.get(donor_nature_of_ailment.lower(), 0)
+  nature_of_ailment_score = ailment_nature_scores.get(recipient_nature_of_ailment.lower(), 0)
 
   # Calculate a combined score based on ailment nature and age difference
   # Here, a higher score signifies better compatibility
