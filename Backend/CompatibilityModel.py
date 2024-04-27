@@ -4,7 +4,7 @@ import Recipient as Recipient
 from FeatureScalers import calculate_ailment_score , calculate_bmi_score , calculate_hla_score , calculate_blood_group_score
 
 def compatibility_score(Donor, Recipient):
-    ailment_score = calculate_ailment_score(Donor.nature_of_ailment, Donor.age, Recipient.age)
+    ailment_score = calculate_ailment_score(Recipient.nature_of_ailment, Donor.age, Recipient.age)
     bmi_score = calculate_bmi_score(Recipient.height, Recipient.weight, Donor.height, Donor.weight)
     hla_score = calculate_hla_score(Recipient.hla_typing, Donor.hla_typing)
     blood_group_score = calculate_blood_group_score(Recipient.blood_group, Donor.blood_group)
