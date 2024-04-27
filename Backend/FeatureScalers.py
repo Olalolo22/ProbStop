@@ -108,6 +108,10 @@ The function accepts the following  as parameters :
 '''
 
 def calculate_hla_score(recipient_hla, donor_hla):
+    # Check if input strings are None or empty
+    if recipient_hla is None or donor_hla is None or not recipient_hla or not donor_hla:
+        return 0
+
     # Convert input strings to lists of tuples
     recipient_hla = [tuple(allele.split(':')) for allele in recipient_hla.split(',')]
     donor_hla = [tuple(allele.split(':')) for allele in donor_hla.split(',')]
@@ -130,6 +134,16 @@ def calculate_hla_score(recipient_hla, donor_hla):
     for recipient_allele, donor_allele in zip(recipient_hla, donor_hla):
         if recipient_allele[0] == donor_allele[0]:
             antigen_match_score += 10
+            
+    return antigen_match_score
+
+
+
+
+score = calculate_hla_score('A*24:02, B*18:01' , 'A*24:02, B*18:01')
+
+print(score)
+
 
 
 
