@@ -1,6 +1,6 @@
 class Donor:
     def __init__(self, name, age, height, weight, blood_group, hla_typing, nature_of_ailment , deceased , organs_available , location  ):
-        self.name = nam
+        self.name = name
         self.age = age
         self.height = height  # in centimeters
         self.weight = weight  # in kilograms
